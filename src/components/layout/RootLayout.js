@@ -1,9 +1,10 @@
 import React from 'react';
+import Navbar from '../ui/Navbar';
 
 const RootLayout = ({children}) => {
     return (
         <>
-        <nav>this is navbar</nav>
+        <Navbar/>
         <div>{children}</div>
         <footer>This is footer</footer>
             
