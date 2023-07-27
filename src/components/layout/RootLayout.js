@@ -1,12 +1,13 @@
 import React from 'react';
 import Navbar from '../ui/Navbar';
+import Footer from '../ui/Footer';
 
 const RootLayout = ({children}) => {
     return (
         <>
         <Navbar/>
-        <div>{children}</div>
-        <footer>This is footer</footer>
+        <div className='min-h-screen'>{children}</div>
+        <Footer/>
             
         </>
     );
