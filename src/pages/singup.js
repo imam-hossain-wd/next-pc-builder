@@ -5,18 +5,37 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
 import { FaGithub } from 'react-icons/fa';
-import { signIn } from "next-auth/react"
+import { signIn } from "next-auth/react";
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { auth } from '@/firebase/firebase.config';
 
 const SingUpPage = () => {
     const {
         register,
         handleSubmit,
-        watch,
+        reset,
         formState: { errors },
       } = useForm()
+      const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useCreateUserWithEmailAndPassword(auth);
     
       const registerHandler = (data) => {
-        console.log(data)
+        createUserWithEmailAndPassword(data.email, data.password);
+        if (user) {
+          return (
+            <div>
+              <p>Signed In User: {user.email}</p>
+            </div>
+          );
+        }
+        if( error){
+          console.log(error);
+        }
+        reset()
       }
     return (
         <section>
