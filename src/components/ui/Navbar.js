@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import React from 'react';
+import { useSession, signOut } from "next-auth/react"
 
 const Navbar = () => {
+  const { data: session } = useSession()
+  console.log(session?.user, 'from nav');
   return (
     <div className="navbar bg-base-100">
     <div className="navbar-start">
@@ -25,9 +28,16 @@ const Navbar = () => {
             </ul>
           </details>
         </li>
-        <li><Link href='singin'>Sing In</Link></li>
+        {
+          session?.user && <li onClick={() => signOut()}><a>Sing out</a></li>
+        }
+        {
+          !session?.user && <div>
+            <li><Link href='singin'>Sing In</Link></li>
         <li><Link href='singup'>Sing up</Link></li>
-        <li><a>Sing out</a></li>
+          </div>
+        }
+        
         <div className="">
       <a className="btn btn-sm mt-2">PC Builder</a>
     </div>
@@ -52,9 +62,15 @@ const Navbar = () => {
             </ul>
           </details>
         </li>
-        <li><Link href='singin'>Sing In</Link></li>
+        {
+          session?.user && <li onClick={() => signOut()}><a>Sing out</a></li>
+        }
+        {
+          !session?.user && <div className='flex'>
+            <li><Link href='singin'>Sing In</Link></li>
         <li><Link href='singup'>Sing up</Link></li>
-        <li><a>Sing out</a></li>
+          </div>
+        }
         <div className="">
       <a className="btn btn-sm ml-5">PC Builder</a>
     </div>

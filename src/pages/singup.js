@@ -5,6 +5,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
 import { FaGithub } from 'react-icons/fa';
+import { signIn } from "next-auth/react"
 
 const SingUpPage = () => {
     const {
@@ -70,7 +71,7 @@ const SingUpPage = () => {
         >
           {" "}
           <p className="font-bold text-3xl text-white">
-            <FaGithub /> 
+            <FaGithub onClick={() => signIn("github")} /> 
           </p>{" "}
         </button>
        </div>
