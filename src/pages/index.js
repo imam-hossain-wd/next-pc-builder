@@ -56,16 +56,14 @@ export default function Home({components}) {
   )
 }
 
-
-export const getStaticProps = async () => {
-  try {
-    const res = await fetch('http://localhost:3000/api/pc-components');
-    const result = await res.json();
-    const components = result.slice(0, 6);
-    return { props: { components} };
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    return { props: { components} }; 
+export const getStaticProps = async ()=>{
+  const res = await fetch("http://localhost:5000/components")
+  const result = await res.json();
+  const data = result.slice(0, 6)
+  return {
+    props:{
+      components:data
+    }
   }
-};
+}
 

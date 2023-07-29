@@ -12,6 +12,7 @@ const {productName,category,price,status,individualRating}= components
     return (
       <div>
         <section className="my-8">
+          <Link href={`/components/${components._id}`}>
           <div className="card w-80 h-[450px] shadow-xl border-gray-600 border-2 text-black">
             <figure className="px-10 pt-10">
               <Image src={image} alt="Shoes" className="rounded-lg w-60 h-48" />
@@ -23,15 +24,8 @@ const {productName,category,price,status,individualRating}= components
               <h2 className="text-sm">{status}</h2>
               <h2 className="text-sm">{individualRating}</h2>
             </div>
-            <div className="flex justify-around mb-3">
-              <button className="btn w-32 bg-gray-800 text-white hover:text-black border-0 rounded-full btn-sm">
-                <Link href={`/components/${components._id}`}>See details</Link>
-              </button>
-              <button className="btn w-32 bg-gray-800 text-white hover:text-black border-0 rounded-full btn-sm">
-                {/* <Link to={`/checkout/}`}>Checkout</Link> */}
-              </button>
-            </div>
           </div>
+          </Link>
         </section>
       </div>
     );
