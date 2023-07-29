@@ -1,15 +1,17 @@
 /* eslint-disable react/no-unescaped-entities */
-import RootLayout from '@/components/layout/RootLayout';
 import Link from 'next/link';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
 import { FaGithub } from 'react-icons/fa';
 import { signIn } from "next-auth/react";
-import { createUser, setUser } from "@/redux/features/user/userSlice";
+import { createUser } from "@/redux/features/user/userSlice";
 import { useDispatch } from "react-redux";
+import { useRouter } from 'next/router';
+
 
 const SingUpPage = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -24,7 +26,9 @@ const SingUpPage = () => {
   const registerHandler = async (data) => {
     const { email, password } = data;
     dispatch(createUser({ email, password }));
-    // navigate('/')
+    reset();
+    router.push('/')
+
   }
 
 
@@ -60,30 +64,20 @@ const SingUpPage = () => {
         </form>
 
         <div className="flex  items-center m-4">
-
-          <hr className="w-28 m-2 text-black" />
-          <p className="ml-3 mr-3">or Sing up with</p>
-          <hr className="w-28 m-2" />
-
-        </div>
+  
+            <hr className="w-24 m-2 text-black" />
+            <p className="mx-2 text-sm"> Sing up with</p>
+            <hr className="w-24 m-2" />
+  
+          </div>
         <div className=" flex justify-center ">
-          <div className='flex justify-around w-96'>
-            <button
-              className="btn  w-36 rounded-full hover:bg-rose-700 border-0"
-            >
-              {" "}
-              <p className="text-3xl font-bold text-white">
-                <FaGoogle />
-              </p>{" "}
-            </button>
-            <button
-              className="btn  w-36 rounded-full hover:bg-rose-700 border-0"
-            >
-              {" "}
-              <p className="font-bold text-3xl text-white">
-                <FaGithub onClick={() => signIn("github")} />
-              </p>{" "}
-            </button>
+          <div className='flex justify-around w-28'>
+            <button className='text-4xl font-bold text-black hover:text-rose-600'><FaGoogle onClick={() => signIn("github",  {
+                    callbackUrl: "http://localhost:3000/"
+                  })} /></button>
+            <button className='text-4xl font-bold text-black hover:text-rose-600'><FaGithub onClick={() => signIn("github",  {
+                    callbackUrl: "http://localhost:3000/"
+                  })} /></button>
           </div>
         </div>
         <p className="font-bold mt-3 text-center">

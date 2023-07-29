@@ -1,10 +1,10 @@
-import RootLayout from '@/components/layout/RootLayout'
 import { auth } from '@/firebase/firebase.config';
 import { setLoading, setUser } from '@/redux/features/user/userSlice';
 import { onAuthStateChanged } from 'firebase/auth';
 import { Inter } from 'next/font/google'
 import { useEffect } from 'react';
-import  { Toaster } from 'react-hot-toast';
+import HomeBanner from '../components/ui/HomeBanner'
+
 import { useDispatch ,useSelector} from 'react-redux';
 
 const inter = Inter({ subsets: ['latin'] })
@@ -32,9 +32,10 @@ export default function Home() {
   }
 
   return (
-    <>
-    <h1>hello next pc builder</h1>
-    </>
+    <div className='w-[90%] h-min-h-screen'>
+   <HomeBanner/>
+    <h1>hello next pc builder home page</h1>
+    </div>
   )
 }
 

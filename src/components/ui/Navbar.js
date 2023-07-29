@@ -72,11 +72,11 @@ const Navbar = () => {
             </li>
             {renderAuthButtons()}
             <div className="">
-              <a className="btn btn-sm mt-2">PC Builder</a>
+              <Link href="/pc-builder" className="btn btn-sm mt-2">PC Builder</Link>
             </div>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">Pc Builder</a>
+        <h1  className="btn btn-sm ml-5">PC Builder</h1>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -96,9 +96,9 @@ const Navbar = () => {
             </details>
           </li>
           {renderAuthButtons()}
-          <div className="">
-            <a className="btn btn-sm ml-5">PC Builder</a>
-          </div>
+          <li >
+            <Link href="/pc-builder" className="btn btn-sm ml-5">PC Builder</Link>
+          </li>
         </ul>
       </div>
     </div>
