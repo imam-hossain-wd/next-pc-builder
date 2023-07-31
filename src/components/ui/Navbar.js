@@ -45,8 +45,8 @@ const Navbar = () => {
     } else {
       return (
         <div className="flex">
-          <li><Link href="signin">Sign In</Link></li>
-          <li><Link href="signup">Sign Up</Link></li>
+          <li><Link href="singin">Sign In</Link></li>
+          <li><Link href="singup">Sign Up</Link></li>
         </div>
       );
     }

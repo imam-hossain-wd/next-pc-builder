@@ -1,21 +1,21 @@
 /* eslint-disable jsx-a11y/alt-text */
 import Image from "next/image";
-import cpu from '../assets/image/cpu.png'
-import monitor from '../assets/image/monitor.jpg'
-import motherboard from '../assets/image/motherboard.png'
-import powesupply from '../assets/image/powe-supply.png'
-import ram from '../assets/image/ram.png'
-import storage from '../assets/image/storage.png'
+import cpu from '../../assets/image/cpu.png'
+import monitor from '../../assets/image/monitor.jpg'
+import motherboard from '../../assets/image/motherboard.png'
+import powesupply from '../../assets/image/powe-supply.png'
+import ram from '../../assets/image/ram.png'
+import storage from '../../assets/image/storage.png'
 import Link from "next/link";
 
 const PcBuilderPage = () => {
     const categories = [
-        { image: cpu, name: 'CPU / Processor', href: '/categories/cpu' },
-        { image: monitor, name: 'Motherboard', href: '/categories/motherboard' },
-        { image: motherboard, name: 'RAM', href: '/categories/ram' },
-        { image: powesupply, name: 'Power Supply', href: '/categories/power supply' },
-        { image: ram, name: 'Storage', href: '/categories/storage' },
-        { image: storage, name: 'monitor', href: '/categories/monitor' },
+        { image: cpu, name: 'CPU / Processor', href: '/pc-builder/cpu' },
+        { image: monitor, name: 'Motherboard', href: '/pc-builder/motherboard' },
+        { image: motherboard, name: 'RAM', href: '/pc-builder/ram' },
+        { image: powesupply, name: 'Power Supply', href: '/pc-builder/power supply' },
+        { image: ram, name: 'Storage', href: '/pc-builder/storage' },
+        { image: storage, name: 'monitor', href: '/pc-builder/monitor' },
 
     ];
 
@@ -52,7 +52,8 @@ const PcBuilderPage = () => {
                     </p>
                   </td>
                   <td className="p-3 text-right">
-                    <button className="btn btn-sm btn-outline btn-primary text-lg capitalize"><Link href={category.href}>Choose</Link></button>
+                    <button className="btn btn-sm btn-outline btn-primary text-lg capitalize">
+                        <Link href={category.href}>Choose</Link></button>
                   </td>
                 </tr>
               ))}
@@ -65,4 +66,3 @@ const PcBuilderPage = () => {
 };
 
 export default PcBuilderPage;
-
