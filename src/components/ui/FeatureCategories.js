@@ -26,7 +26,7 @@ const FeatureCategories = () => {
                 <div className='grid grid-cols-6'>
                     {imagesData.map((data, index) => (
                         <div key={index} className='bg-white p-4 rounded-lg shadow-md text-center w-[90%] mx-auto'>
-                            <Link href={`/products/${data.name}`}>
+                            <Link href={`/categories/${data.name}`}>
                             <Image
                                 src={data.src}
                                 width={60}

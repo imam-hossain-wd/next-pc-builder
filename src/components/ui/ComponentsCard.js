@@ -3,7 +3,7 @@ import image from '../../assets/image/desktop-carousel4-280922.webp'
 import Link from 'next/link';
 
 const ComponentsCard = ({ components }) => {
-    console.log(components, 'from card');
+
 
 const {productName,category,price,status,individualRating}= components
     if (!components) {
