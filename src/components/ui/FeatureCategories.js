@@ -23,10 +23,11 @@ const FeatureCategories = () => {
 
             <div>
                 <h1 className='text-center font-bold text-3xl text-black'>This is features category</h1>
-                <div className='grid grid-cols-6'>
+                <div className='w-[90%]  mx-auto my-4'>
+                <div className='grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6'>
                     {imagesData.map((data, index) => (
                         <div key={index} className='bg-white p-4 rounded-lg shadow-md text-center w-[90%] mx-auto'>
-                            <Link href={`/categories/${data.name}`}>
+                             <Link href={`/categories/${data.name.toLowerCase()}`}>
                             <Image
                                 src={data.src}
                                 width={60}
@@ -36,6 +37,7 @@ const FeatureCategories = () => {
                             <p className='text-center font-semibold text-black'>{data.name}</p></Link>
                         </div>
                     ))}
+                </div>
                 </div>
             </div>
         </div>

@@ -39,8 +39,8 @@ export default function Home({components}) {
     <div className='w-[90%] h-min-h-screen'>
    <HomeBanner/>
    
-     <div className='w-[90%] mx-auto'>
-     <div className='grid grid-cols-3'>
+     <div className='sm:ml-10 md:ml-14 lg:ml-28 mx-auto'>
+     <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
      {
      components &&
       components?.map((component) => {

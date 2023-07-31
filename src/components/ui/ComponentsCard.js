@@ -11,9 +11,9 @@ const {productName,category,price,status,individualRating}= components
       }
     return (
       <div>
-        <section className="my-8">
+        <section className="my-8 ">
           <Link href={`/components/${components._id}`}>
-          <div className="card w-80 h-[450px] shadow-xl border-gray-600 border-2 text-black">
+          <div className="card w-80  h-[450px] shadow-xl border-gray-600 border-2 text-black">
             <figure className="px-10 pt-10">
               <Image src={image} alt="Shoes" className="rounded-lg w-60 h-48" />
             </figure>

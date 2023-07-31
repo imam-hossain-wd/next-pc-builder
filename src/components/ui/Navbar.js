@@ -1,47 +1,52 @@
+import React from 'react';
 import Link from 'next/link';
-import React, { useEffect } from 'react';
-import { useSession,signOut } from "next-auth/react";
+import { useSession, signOut } from 'next-auth/react';
 import { useSignOut } from 'react-firebase-hooks/auth';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 import { auth } from '@/firebase/firebase.config';
 import { clearUser } from '@/redux/features/user/userSlice';
+import DropdownContent from './DropdownContent';
+
 
 const Navbar = () => {
-
   const { data: session } = useSession();
   const nextAuthUserEmail = session?.user;
   const firebaseUserEmail = useSelector((state) => state.user.user.email);
-  firebaseUserEmail && console.log("firebase email", firebaseUserEmail);
-  nextAuthUserEmail && console.log("nextauth github email", nextAuthUserEmail);
+  firebaseUserEmail && console.log('firebase email', firebaseUserEmail);
+  nextAuthUserEmail && console.log('nextauth github email', nextAuthUserEmail);
 
   const [signOutFirebase] = useSignOut(auth);
   const dispatch = useDispatch();
 
   const nextAuthLoggedOut = async () => {
     await signOut();
-    dispatch(clearUser())
+    dispatch(clearUser());
   };
 
-  // Firebase Logout Function
+ 
   const firebaseLoggedOut = async () => {
     await signOutFirebase();
     dispatch(clearUser());
   };
 
+  const categories = [
+    { name: 'CPU / Processor', href: '/categories/cpu' },
+    { name: 'Motherboard', href: '/categories/motherboard' },
+    { name: 'RAM', href: '/categories/ram' },
+    { name: 'Power Supply', href: '/categories/power supply' },
+    { name: 'Storage', href: '/categories/storage' },
+    { name: 'monitor', href: '/categories/monitor' },
+    { name: 'Others', href: '/others' },
+  ];
 
   const renderAuthButtons = () => {
-    if (nextAuthUserEmail) {
-      return <li onClick={nextAuthLoggedOut}><a>Sing out</a></li>
-
-    }
-    else if (firebaseUserEmail) {
-      return <li onClick={firebaseLoggedOut}><a>Sing out</a></li>
-
-    }else {
+    if (nextAuthUserEmail || firebaseUserEmail) {
+      return <li onClick={nextAuthLoggedOut}><a>Sign out</a></li>;
+    } else {
       return (
-        <div className='flex'>
-          <li><Link href='singin'>Sing In</Link></li>
-          <li><Link href='singup'>Sing up</Link></li>
+        <div className="flex">
+          <li><Link href="signin">Sign In</Link></li>
+          <li><Link href="signup">Sign Up</Link></li>
         </div>
       );
     }
@@ -59,15 +64,8 @@ const Navbar = () => {
             <li tabIndex={0}>
               <details>
                 <summary>Categories</summary>
-                <ul className="p-2">
-                  <li><Link href="/">CPU / Processor</Link></li>
-                  <li><Link href="/">Motherboard</Link></li>
-                  <li><Link href="/">RAM</Link></li>
-                  <li><Link href="/">Power Supply Unit</Link></li>
-                  <li><Link href="/">Storage Device</Link></li>
-                  <li><Link href="/">Monitor</Link></li>
-                  <li><Link href="/">Others</Link></li>
-                </ul>
+              
+                <DropdownContent categories={categories} />
               </details>
             </li>
             {renderAuthButtons()}
@@ -76,7 +74,7 @@ const Navbar = () => {
             </div>
           </ul>
         </div>
-        <h1  className="btn btn-sm ml-5">PC Builder</h1>
+        <h1 className="btn btn-sm ml-5">PC Builder</h1>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -84,19 +82,11 @@ const Navbar = () => {
           <li tabIndex={0}>
             <details>
               <summary>Categories</summary>
-              <ul className="p-2">
-                <li><Link href="/">CPU / Processor</Link></li>
-                <li><Link href="/">Motherboard</Link></li>
-                <li><Link href="/">RAM</Link></li>
-                <li><Link href="/">Power Supply Unit</Link></li>
-                <li><Link href="/">Storage Device</Link></li>
-                <li><Link href="/">Monitor</Link></li>
-                <li><Link href="/">Others</Link></li>
-              </ul>
+              <DropdownContent categories={categories} />
             </details>
           </li>
           {renderAuthButtons()}
-          <li >
+          <li>
             <Link href="/pc-builder" className="btn btn-sm ml-5">PC Builder</Link>
           </li>
         </ul>
