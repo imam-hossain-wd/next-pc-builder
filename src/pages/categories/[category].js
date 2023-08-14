@@ -8,9 +8,9 @@ const CategoryPage = ({ products }) => {
 
   return (
     <div>
-      <h1 className='text-center font-bold text-3xl my-5 text-black'>There are {category.length} {category} in this category</h1>
+      <h1 className='text-center font-bold text-3xl my-5 text-black capitalize'>{category} Category</h1>
 
-      <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+      <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-5 gap-5 ml-20 w-[90%] mx-auto'>
       {
           products.map((product) => (
           <div key={product._id}>

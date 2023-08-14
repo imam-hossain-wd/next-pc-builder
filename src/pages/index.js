@@ -50,8 +50,6 @@ export default function Home({components}) {
      </div>
      </div>
      <FeatureCategories/>
-   
-    <h1>hello next pc builder home page</h1>
     </div>
   )
 }
