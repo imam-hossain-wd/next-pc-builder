@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 
 const DropdownContent = ({ categories }) => {
-    console.log(categories, 'from ddwn');
   return (
     <ul className="p-2">
       {categories.map((category) => (

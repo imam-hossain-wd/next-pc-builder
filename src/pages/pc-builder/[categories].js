@@ -1,18 +1,23 @@
+import React from "react";
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import image from '../../assets/image/cpu.png'
-
+import { useDispatch } from "react-redux";
+import { addComponent } from "../../redux/features/pcBuilder/pcbuilderSlice";
 
 const CategoryPage = ({ categoryData }) => {
     const router = useRouter();
     const { categories } = router.query;
-    console.log('pc builder categories', categoryData);
 
+    const dispatch = useDispatch();
 
+    const addbuilderPc = (product) => {
+        dispatch(addComponent({ product }));
+    };
 
     return (
         <div>
-            <h1 className='text-center font-bold text-2xl text-black my-5 '>There are {categoryData.length} <span className='capitalize'>{categories}</span>  in this category </h1>
+            <h1 className='text-center font-bold text-2xl text-black my-5 '>There are {categoryData?.length} <span className='capitalize'>{categories}</span>  in this category </h1>
             {
                 categoryData?.map(data => (
                     <div key={data._id} className="card w-[70%] mx-auto my-5 p-5 shadow-xl border-gray-600 border-2 text-black">
@@ -31,7 +36,7 @@ const CategoryPage = ({ categoryData }) => {
                             </div>
                             <div>
                                 <p className='ml-5 my-3 font-bold text-xl'>${data.price}</p>
-                                <button className='w-28 rounded-lg hover:bg-sky-500 h-10 bg-sky-400 border-0'>Add</button>
+                                <button onClick={() => addbuilderPc(data)} className='w-36 h-12 font-bold rounded-lg hover:bg-sky-500 h-10 bg-sky-400 border-0'>Add To Builder</button>
                             </div>
                         </div>
                     </div>
@@ -44,6 +49,7 @@ const CategoryPage = ({ categoryData }) => {
 };
 
 export default CategoryPage;
+
 
 export async function getServerSideProps({ params }) {
     const category = params.categories;
