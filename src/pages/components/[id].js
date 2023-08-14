@@ -29,13 +29,13 @@ const ComponentsDetails = ({ component }) => {
             </div>
           </div>
           <div className='text-black'>
-            <h1 className='text-4xl font-bold text-black'>User Reviews</h1>
+            <h1 className='text-2xl text-center font-bold text-black'><span className='capitalize'>{category}</span> Reviews</h1>
             {
               reviews?.map((review, index) => (
-                <div key={index} className='bg-gray-700 p-5 m-5 rounded-lg text-white'>
-                  <p>{review.username}</p>
-                  <p>{review.rating}</p>
-                  <p>{review.comment}</p>
+                <div key={index} className='border-2 border-gray-700 p-5 m-5 rounded-lg '>
+                  <p><span className='font-bold'>User Name :</span> {review.username}</p>
+                  <p> <span className='font-bold'>Rating :</span> {review.rating}</p>
+                  <p><span className='font-bold'>Comment :</span> {review.comment}</p>
 
                 </div>
               ))
