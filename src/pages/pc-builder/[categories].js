@@ -1,55 +1,98 @@
-import React from "react";
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import image from '../../assets/image/cpu.png'
+/* eslint-disable @next/next/no-img-element */
+
+import Link from "next/link";
 import { useDispatch } from "react-redux";
-import { addComponent } from "../../redux/features/pcBuilder/pcbuilderSlice";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/router";
 
-const CategoryPage = ({ categoryData }) => {
-    const router = useRouter();
-    const { categories } = router.query;
+import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+import Header from "@/components/Header";
+import { addToCart } from "@/redux/features/pcBuilder/pcbuilderSlice";
 
-    const dispatch = useDispatch();
-
-    const addbuilderPc = (product) => {
-        dispatch(addComponent({ product }));
-    };
-
-    return (
-        <div>
-            <h1 className='text-center font-bold text-2xl text-black my-5 '>There are {categoryData?.length} <span className='capitalize'>{categories}</span>  in this category </h1>
-            {
-                categoryData?.map(data => (
-                    <div key={data._id} className="card w-[70%] mx-auto my-5 p-5 shadow-xl border-gray-600 border-2 text-black">
-                        <div className='flex flex-col lg:flex-row justify-between items-center'>
-                            <div className='flex flex-col lg:flex-row'>
-                                <figure className="px-10 pt-10">
-                                    <Image src={image} alt="Shoes" className="rounded-lg w-36 h-32" />
-                                </figure>
-                                <div className="card-body">
-                                    <h2 className="text-lg font-bold">Name :{data.productName}</h2>
-                                    <h2 className="text-sm">{data.category}</h2>
-                                    <h2 className="text-sm">{data.price}</h2>
-                                    <h2 className="text-sm">{data.status}</h2>
-                                    <h2 className="text-sm">{data.individualRating}</h2>
-                                </div>
-                            </div>
-                            <div>
-                                <p className='ml-5 my-3 font-bold text-xl'>${data.price}</p>
-                                <button onClick={() => addbuilderPc(data)} className='w-36 h-12 font-bold rounded-lg hover:bg-sky-500 h-10 bg-sky-400 border-0'>Add To Builder</button>
-                            </div>
-                        </div>
-                    </div>
-
-                ))
-            }
-
-        </div>
-    );
+const CategoryProducts = ({ products, category }) => {
+  return (
+    <div className="my-20">
+      <Header
+        title={`${category}'s`}
+        subtitle="Discover our top-rated products crafted with care"
+      />
+      <div className="mb-32 grid lg:grid-cols-3 md:grid-cols-2 gap-12 container mx-auto">
+        {products ? (
+          products.map((product, idx) => (
+            <CategoryProduct key={product._id} product={product} />
+          ))
+        ) : (
+          <>Loading...</>
+        )}
+      </div>
+    </div>
+  );
 };
 
-export default CategoryPage;
+export default CategoryProducts;
 
+export const CategoryProduct = ({ product }) => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  const handleAddProduct = (product) => {
+    dispatch(addToCart(product));
+    toast.success("Item Added");
+    router.push("/pc-builder");
+  };
+  const {  productName, image, category, price, status } = product;
+  return (
+    <div className="shadow-md bg-gray-100 h-auto rounded-md p-4">
+      <Link href={`/product/${product?._id}`}>
+        <div className="h-[300px]">
+          <img
+            className="rounded-lg object-cover w-full h-full"
+            src={image ? image : peperoni}
+            alt="pizza"
+          />
+        </div>
+      </Link>
+      <Link href={`/product/${product?._id}`}>
+        <div>
+          <div className="text-center">
+            <h2 className="text-lg font-bold py-2 ">{productName}</h2>
+            <span className="bg-gray-200 rounded-full text-sm px-4">
+              {category}
+            </span>
+          </div>
+
+          <div className="flex justify-between items-center mt-4 mb-4">
+            <span className="font-semibold">Tk {price}</span>
+            <div className="flex gap-1 text-amber-500 text-sm">
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStarHalfAlt />
+            </div>
+            <button
+              className={`border-2 ${
+                status ? "border-amber-500" : "border-red-500"
+              }  py-2 px-3 rounded-full`}
+            >
+              {status ? (
+                <span className="">In stock</span>
+              ) : (
+                <span>Out of stock</span>
+              )}
+            </button>
+          </div>
+        </div>
+      </Link>
+      <button
+        className="bg-amber-500 text-white py-2 px-5 rounded-sm rounded-bl-[15%] font-semibold"
+        onClick={() => handleAddProduct(product)}
+      >
+       Add to builder
+      </button>
+    </div>
+  );
+};
 
 export async function getServerSideProps({ params }) {
     const category = params.categories;
@@ -57,7 +100,8 @@ export async function getServerSideProps({ params }) {
     const categoryData = await response.json();
     return {
         props: {
-            categoryData,
+            products:categoryData,
+            category
         },
     };
 }

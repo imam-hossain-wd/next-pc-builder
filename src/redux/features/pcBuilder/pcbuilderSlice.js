@@ -1,52 +1,68 @@
+// import { createSlice } from '@reduxjs/toolkit';
+
+// const initialState = {
+//   product: []
+// };
+
+// const pcBuilderSlice = createSlice({
+//   name: 'pcbuilder',
+//   initialState,
+//   reducers: {
+//     addItemToCart: (state, action) => {
+//       const newItem = action.payload;
+//       state.product.push(newItem);
+    
+
+//     },
+//   },
+// });
+
+// export const { addItemToCart} = pcBuilderSlice.actions;
+
+// export default pcBuilderSlice.reducer;
+
+
 import { createSlice } from "@reduxjs/toolkit";
 
-const loadState = () => {
-  try {
-    const serializedState = localStorage.getItem("pcBuilder");
-    if (serializedState === null) {
-      return undefined;
-    }
-    return JSON.parse(serializedState);
-  } catch (err) {
-    return undefined;
-  }
+const initialState = {
+  products: [],
+  total: 0,
+  productsTotal: 0,
 };
 
-const saveState = (state) => {
-  try {
-    const serializedState = JSON.stringify(state);
-    localStorage.setItem("pcBuilder", serializedState);
-  } catch (err) {
-  console.log(err);
-  }
-};
-
-const initialState = loadState() || {
-  selectedComponents: {},
-};
-
-const pcBuilderSlice = createSlice({
-  name: "pcBuilder",
+const cartSlice = createSlice({
+  name: "cart",
   initialState,
   reducers: {
-    addComponent: (state, action) => {
-      const { product } = action.payload;
-      if (!state.selectedComponents[product.category]) {
-        state.selectedComponents[product.category] = [];
+    addToCart: (state, action) => {
+      const newProduct = action.payload;
+      const existingProductIndex = state.products.findIndex(
+        (product) => product.category === newProduct.category
+      );
+
+      if (existingProductIndex !== -1) {
+        state.total -= state.products[existingProductIndex].price;
+        state.products[existingProductIndex] = newProduct;
+      } else {
+        
+        state.products.push(newProduct);
       }
-      state.selectedComponents[product.category].push(product);
+
+      state.total += newProduct.price;
+      state.productsTotal += 1;
+    },
+
+    removeOne: (state, action) => {
+      state.products = state.products.filter(
+        (product) => product._id !== action.payload._id
+      );
+
+      state.total -= action.payload.price;
+      state.productsTotal -= 1;
     },
   },
 });
 
-export const { addComponent } = pcBuilderSlice.actions;
+export const { addToCart, removeOne } = cartSlice.actions;
 
-
-export const setupLocalStorage = (store) => {
-  store.subscribe(() => {
-    saveState(store.getState().pcBuilder);
-  });
-};
-
-export default pcBuilderSlice.reducer;
-
+export default cartSlice.reducer;

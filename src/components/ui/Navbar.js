@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { auth } from '@/firebase/firebase.config';
 import { clearUser } from '@/redux/features/user/userSlice';
 import DropdownContent from './DropdownContent';
+import pcHouse from '../../assets/logo/pc-house-logo.jpg'
+import Image from 'next/image';
 
 
 const Navbar = () => {
@@ -74,7 +76,7 @@ const Navbar = () => {
             </div>
           </ul>
         </div>
-        <h1 className="btn btn-sm ml-5">PC Builder</h1>
+        <Image width={60} height={50} className='rounded ml-5' src={pcHouse} alt="pchouselogo" />
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">

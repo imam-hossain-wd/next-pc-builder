@@ -1,68 +1,22 @@
-
-// import Footer from '@/components/ui/Footer';
-// import Navbar from '@/components/ui/Navbar';
-// import { store } from '@/redux/store';
-// import '@/styles/globals.css'
-// import { SessionProvider } from "next-auth/react"
-// import { Provider } from 'react-redux';
-// export default function App({ Component, pageProps }) {
-
-//   return(
-//     <SessionProvider session={pageProps.session}>
-//     <Provider store={store}>
-//     <Navbar/>
-//     <Component {...pageProps} />
-//     <Footer/>
-//     </Provider>
-//     </SessionProvider>
-
-   
-//   );
-// }
-import Footer from '@/components/ui/Footer';
-import Navbar from '@/components/ui/Navbar';
-// import { store } from '@/redux/store';
-import '@/styles/globals.css';
 import { Provider } from 'react-redux';
 import { SessionProvider } from 'next-auth/react';
-import  { Toaster } from 'react-hot-toast';
-
-// export default function App({ Component, pageProps }) {
-//   return (
-//     <SessionProvider session={pageProps.session}>
-//       <Provider store={store}>
-//         <Navbar />
-//         <Toaster/>
-//         <Component {...pageProps} />
-//         <Footer />
-//       </Provider>
-//     </SessionProvider>
-//   );
-// }
-
-import { PersistGate } from "redux-persist/integration/react";
-import store, { persistor } from "../redux/store";
+import { Toaster } from 'react-hot-toast';
+import store from "../redux/store";
+import Footer from '@/components/ui/Footer';
+import Navbar from '@/components/ui/Navbar';
+import '@/styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
   return (
     <SessionProvider session={pageProps.session}>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-      <Navbar />
-      <Toaster/>
+      <Provider store={store}>
+        <Navbar />
+        <Toaster />
         <Component {...pageProps} />
         <Footer />
-      </PersistGate>
-    </Provider>
+      </Provider>
     </SessionProvider>
   );
 }
 
 export default MyApp;
-
-
-
-
-
- 
-
