@@ -1,27 +1,3 @@
-// import { createSlice } from '@reduxjs/toolkit';
-
-// const initialState = {
-//   product: []
-// };
-
-// const pcBuilderSlice = createSlice({
-//   name: 'pcbuilder',
-//   initialState,
-//   reducers: {
-//     addItemToCart: (state, action) => {
-//       const newItem = action.payload;
-//       state.product.push(newItem);
-    
-
-//     },
-//   },
-// });
-
-// export const { addItemToCart} = pcBuilderSlice.actions;
-
-// export default pcBuilderSlice.reducer;
-
-
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {

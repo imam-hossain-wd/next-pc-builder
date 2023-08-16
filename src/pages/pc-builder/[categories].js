@@ -43,7 +43,7 @@ export const CategoryProduct = ({ product }) => {
   const {  productName, image, category, price, status } = product;
   return (
     <div className="shadow-md bg-gray-100 h-auto rounded-md p-4">
-      <Link href={`/product/${product?._id}`}>
+      <Link href={`/components/${product?._id}`}>
         <div className="h-[300px]">
           <img
             className="rounded-lg object-cover w-full h-full"
@@ -52,7 +52,7 @@ export const CategoryProduct = ({ product }) => {
           />
         </div>
       </Link>
-      <Link href={`/product/${product?._id}`}>
+      <Link href={`/components/${product?._id}`}>
         <div>
           <div className="text-center">
             <h2 className="text-lg font-bold py-2 ">{productName}</h2>

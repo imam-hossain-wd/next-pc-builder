@@ -36,7 +36,7 @@ export default function Home({components}) {
   }
 
   return (
-    <div className='w-[90%] h-min-h-screen'>
+    <div className=''>
    <HomeBanner/>
    
      <div className='sm:ml-10 md:ml-14 lg:ml-28 mx-auto'>
