@@ -11,6 +11,7 @@ import Image from 'next/image';
 
 
 const Navbar = () => {
+
   const { data: session } = useSession();
   const nextAuthUserEmail = session?.user;
   const firebaseUserEmail = useSelector((state) => state.user.user.email);
@@ -46,50 +47,48 @@ const Navbar = () => {
       return <li onClick={nextAuthLoggedOut}><a>Sign out</a></li>;
     } else {
       return (
-        <div className="flex">
-          <li><Link href="singin">Sign In</Link></li>
-          <li><Link href="singup">Sign Up</Link></li>
+        <div className="flex flex-col lg:flex-row">
+          <li><Link href="/singin">Sign In</Link></li>
+          <li><Link href="/singup">Sign Up</Link></li>
+          <li><Link href="/pc-builder" className="text-black">PC Builder</Link></li>
         </div>
       );
     }
   };
 
   return (
-    <div className="navbar text-black">
+    <div className="navbar text-black z-50 bg-white">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
           </label>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-            <li><a>Home</a></li>
+          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow rounded-box w-52 bg-white">
+            <li><Link href="/">Home</Link></li>
             <li tabIndex={0}>
               <details>
                 <summary>Categories</summary>
-              
                 <DropdownContent categories={categories} />
               </details>
             </li>
             {renderAuthButtons()}
-            <div className="">
-              <Link href="/pc-builder" className="btn btn-sm mt-2">PC Builder</Link>
-            </div>
+                      
           </ul>
         </div>
         <Image width={60} height={50} className='rounded ml-5' src={pcHouse} alt="pchouselogo" />
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+      <div className="navbar-center hidden lg:flex ">
+        <ul className="menu menu-horizontal px-1 bg-white text-black">
           <li><Link href="/">Home</Link></li>
           <li tabIndex={0}>
-            <details>
-              <summary>Categories</summary>
-              <DropdownContent categories={categories} />
+            <details className=''>
+              <summary className="">Categories</summary>
+              <DropdownContent  categories={categories} />
             </details>
           </li>
           {renderAuthButtons()}
           <li>
-            <Link href="/pc-builder" className="btn btn-sm ml-5">PC Builder</Link>
+          
           </li>
         </ul>
       </div>

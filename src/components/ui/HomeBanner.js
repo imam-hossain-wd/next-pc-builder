@@ -6,7 +6,7 @@ const HomeBanner = () => {
   return (
 <div className='relative mt-5'>
   <div className='w-full h-[500px] relative'>
-    <div className='absolute inset-0 bg-gradient-to-tr from-black to-state-700'></div>
+    <div className='absolute inset-0 bg-gradient-to-tr from-black to-state-900'></div>
     <Image className='w-full h-full' src={banner} alt="banner" />
   </div>
   <div className="flex flex-col gap-6 justify-center items-center absolute inset-0 container mx-auto">
