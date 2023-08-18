@@ -8,5 +8,8 @@ export const authOptions = {
     }),
  
   ],
+  pages: {
+    signIn: "/singin",
+  },
 }
 export default NextAuth(authOptions)
