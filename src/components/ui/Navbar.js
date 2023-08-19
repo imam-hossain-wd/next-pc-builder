@@ -15,8 +15,6 @@ const Navbar = () => {
   const { data: session } = useSession();
   const nextAuthUserEmail = session?.user;
   const firebaseUserEmail = useSelector((state) => state.user.user.email);
-  firebaseUserEmail && console.log('firebase email', firebaseUserEmail);
-  nextAuthUserEmail && console.log('nextauth github email', nextAuthUserEmail);
 
   const [signOutFirebase] = useSignOut(auth);
   const dispatch = useDispatch();
@@ -33,13 +31,14 @@ const Navbar = () => {
   };
 
   const categories = [
-    { name: 'CPU / Processor', href: '/categories/cpu' },
+    { name: 'Processor', href: '/categories/processor' },
+    { name: 'GPU', href: '/categories/gpu' },
     { name: 'Motherboard', href: '/categories/motherboard' },
     { name: 'RAM', href: '/categories/ram' },
-    { name: 'Power Supply', href: '/categories/power supply' },
-    { name: 'Storage', href: '/categories/storage' },
+    { name: 'Power Supply', href: '/categories/power supply unit' },
+    { name: 'Storage', href: '/categories/storage device' },
     { name: 'monitor', href: '/categories/monitor' },
-    { name: 'Others', href: '/others' },
+    { name: 'Others', href: '/categories/others' },
   ];
 
   const renderAuthButtons = () => {
@@ -50,7 +49,7 @@ const Navbar = () => {
         <div className="flex flex-col lg:flex-row">
           <li><Link href="/singin">Sign In</Link></li>
           <li><Link href="/singup">Sign Up</Link></li>
-          <li><Link href="/pc-builder" className="text-black">PC Builder</Link></li>
+         
         </div>
       );
     }
@@ -65,13 +64,18 @@ const Navbar = () => {
           </label>
           <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow rounded-box w-52 bg-white">
             <li><Link href="/">Home</Link></li>
+           
             <li tabIndex={0}>
               <details>
                 <summary>Categories</summary>
                 <DropdownContent categories={categories} />
+               
               </details>
             </li>
+           
             {renderAuthButtons()}
+            <li><Link className='' href="/pc-builder">Pc builder</Link></li>
+            
                       
           </ul>
         </div>
@@ -84,12 +88,11 @@ const Navbar = () => {
             <details className=''>
               <summary className="">Categories</summary>
               <DropdownContent  categories={categories} />
+             
             </details>
           </li>
           {renderAuthButtons()}
-          <li>
-          
-          </li>
+          <li><Link className='' href="/pc-builder">Pc builder</Link></li>
         </ul>
       </div>
     </div>

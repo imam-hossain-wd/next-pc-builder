@@ -4,7 +4,7 @@ import image from '../../assets/image/desktop-carousel4-280922.webp'
 
 const ComponentsDetails = ({ component }) => {
 
-  const { productName, keyFeatures, category, price, status, individualRating, description, averageRating, reviews } = component[0];
+  const { productName, keyFeatures, category, price, status, individualRating, description,image, averageRating, reviews } = component[0];
   return (
     <div>
       <h1 className='text-3xl font-bold text-center text-black my-5'>Product Details page</h1>
@@ -12,7 +12,7 @@ const ComponentsDetails = ({ component }) => {
         <div className='flex justify-around items-center'>
           <div className="card w-[40%] h-[300px]  shadow-xl text-black">
             <figure className="">
-              <Image src={image} alt="Shoes" className="rounded-lg w-[400px] h-60" />
+              <img src={image}  alt="Shoes" className="rounded-lg w-[400px] h-60" />
             </figure>
           </div>
           <div className='text-black'>

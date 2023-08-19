@@ -17,7 +17,7 @@ const ComponentsCard = ({ components }) => {
             <div className="h-[300px]">
               <img
                 className="rounded-lg object-cover w-full h-full"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyORrI-xzsbSOKCjp4svPhgBWfEjT1xeggR3By5OKz&s"
+                src={components?.image}
                 alt="pizza"
               />
             </div>
@@ -61,19 +61,6 @@ const ComponentsCard = ({ components }) => {
 
   import { useRouter } from "next/router";
 
-
-
-
-
-
-  
-
-  
-  // export const CategoryProduct = ({ product }) => {
-  //   console.log(product, 'category ppppp');
-
-    
-  // };
 
 
 

@@ -7,7 +7,6 @@ import { useDispatch } from "react-redux";
 
 const BuilderItem = ({ category, product }) => {
   const dispatch = useDispatch();
-
   return (
     <>
       <div className="flex xsm:flex-col sm:flex-row xsm:gap-6 justify-between w-full items-center my-8">
@@ -39,7 +38,7 @@ const BuilderItem = ({ category, product }) => {
           
           <Link href={`/pc-builder/${category?.category}`}>
             {!product && (
-              <button className="px-6 py-2  border-2 border-amber-500 rounded-bl-[15%]  text-xl rounded-sm ">
+              <button className="px-6 py-2  transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded text-white ">
                 Choose
               </button>
             )}

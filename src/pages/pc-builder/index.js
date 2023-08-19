@@ -5,8 +5,11 @@ import Header from "@/components/Header";
 
 
 const PcBuilder = ({ categories }) => {
-  const { products, total, productsTotal } = useSelector((state) => state.cart);
+  const {  total, productsTotal } = useSelector((state) => state.cart);
+  const products = useSelector((state) => state.cart.products);
   const dispatch = useDispatch();
+
+  
 
   const handleClick = () => {
     toast.success("PC build done...");
@@ -25,7 +28,7 @@ const PcBuilder = ({ categories }) => {
           <h1 className="font-semibold text-xl">Selected: {productsTotal}</h1>
           <h1 className="text-xl font-semibold ">Total Price: Tk {total}</h1>
           <button
-            className={`px-12 py-2 border-2 border-amber-500 rounded-bl-[15%] rounded-sm font-semibold  ${
+            className={`px-12 py-2 border-2 border-rose-500 rounded-sm font-semibold  ${
               productsTotal < 5 && "disabled:opacity-50"
             }`}
             disabled={productsTotal < 5}

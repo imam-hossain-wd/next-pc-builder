@@ -1,9 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 
 const ProductCard = ({ product }) => {
   return (
     <div className="product-card">
-      {/* <img src={product.image} alt={product.productName} /> */}
+      <img src={product.image} alt={product.productName} />
       <h3>{product.productName}</h3>
       <p>Category: {product.category}</p>
       <p>Price: {product.price}</p>
@@ -17,3 +18,5 @@ const ProductCard = ({ product }) => {
 };
 
 export default ProductCard;
+
+

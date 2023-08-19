@@ -56,7 +56,6 @@ export default function Home({components}) {
 
 export const getStaticProps = async ()=>{
   const res = await fetch("http://localhost:5000/components");
-  console.log(res);
   const result = await res.json();
   const data = result.slice(0, 6)
   return {

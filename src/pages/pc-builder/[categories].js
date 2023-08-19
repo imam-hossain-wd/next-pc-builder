@@ -40,6 +40,7 @@ export const CategoryProduct = ({ product }) => {
     toast.success("Item Added");
     router.push("/pc-builder");
   };
+  
   const {  productName, image, category, price, status } = product;
   return (
     <div className="shadow-md bg-gray-100 h-auto rounded-md p-4">
