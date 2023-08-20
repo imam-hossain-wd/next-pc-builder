@@ -7,14 +7,8 @@ import Header from "@/components/Header";
 const PcBuilder = ({ categories }) => {
   const {  total, productsTotal } = useSelector((state) => state.cart);
   const products = useSelector((state) => state.cart.products);
-  const dispatch = useDispatch();
-
-  console.log(products);
-
-  
-
   const handleClick = () => {
-    toast.success("PC build done...");
+    toast.success("PC build done !");
   };
 
 

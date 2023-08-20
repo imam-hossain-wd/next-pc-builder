@@ -31,7 +31,7 @@ const BuilderItem = ({ category, product }) => {
           )}
           {product && (
             <button
-              className="px-6 py-2  border-2 border-red-500 rounded-bl-[15%] text-black text-xl rounded-sm "
+            className="px-6 py-2  transition ease-in-out delay-150 bg-red-500  hover:-translate-y-1 hover:scale-110 hover:bg-red-600 duration-300 rounded text-white "
               onClick={() => dispatch(removeOne(product))}
             >
               Remove

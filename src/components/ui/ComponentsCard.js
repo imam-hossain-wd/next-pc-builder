@@ -12,7 +12,7 @@ const ComponentsCard = ({ components }) => {
       const {  productName, image, category, price, status } = components;
       return (
         <Link href={`/components/${components?._id}`}>
-          <div className="shadow-md bg-gray-100 h-auto rounded-md p-4">
+          <div className="shadow-md bg-gray-100 h-auto rounded-md p-4 text-black">
             <div className="h-[300px]">
               <img
                 className="rounded-lg object-cover w-full h-full"

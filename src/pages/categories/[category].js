@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 
 const CategoryProducts = ({ products, category }) => {
   return (
-    <div className="my-20">
+    <div className="my-20 text-black capitalize">
       <Header
         title={`${category}'s`}
         subtitle="Discover our top-rated products crafted with care"
