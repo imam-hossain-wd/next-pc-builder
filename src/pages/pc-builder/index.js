@@ -9,6 +9,8 @@ const PcBuilder = ({ categories }) => {
   const products = useSelector((state) => state.cart.products);
   const dispatch = useDispatch();
 
+  console.log(products);
+
   
 
   const handleClick = () => {

@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from 'next/image';
-import image from '../../assets/image/desktop-carousel4-280922.webp'
 import Link from 'next/link';
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 

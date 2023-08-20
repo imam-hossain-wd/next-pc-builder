@@ -1,13 +1,11 @@
-import React from 'react';
-import banner from '../../assets/image/HD-wallpaper-motherboard-internal-motherboard-computer.jpg'
-import Image from 'next/image';
+/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 const HomeBanner = () => {
   return (
 <div className='relative mt-5'>
   <div className='w-full h-[500px] relative'>
     <div className='absolute inset-0 bg-gradient-to-tr from-black to-state-900'></div>
-    <Image className='w-full h-full' src={banner} alt="banner" />
+    <img className='w-full h-full' src="https://i.ibb.co/Mp5bSwW/HD-wallpaper-motherboard-internal-motherboard-computer.jpg" alt="banner" />
   </div>
   <div className="flex flex-col gap-6 justify-center items-center absolute inset-0 container mx-auto">
     <h2 className="text-white text-3xl font-bold cursor-pointer">

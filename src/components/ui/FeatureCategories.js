@@ -1,22 +1,18 @@
-import monitor from '../../assets/image/monitor.jpg'
-import cpu from '../../assets/image/cpu.png';
-import motherboard from '../../assets/image/motherboard.png'
-import powersupply from '../../assets/image/powe-supply.png'
-import ram from '../../assets/image/ram.png'
-import storage from '../../assets/image/storage.png'
+/* eslint-disable @next/next/no-img-element */
 import Image from 'next/image';
 import Link from 'next/link';
 
 const imagesData = [
-    { src: monitor, name: 'Monitor' },
-    { src: cpu, name: 'CPU' },
-    { src: motherboard, name: 'Motherboard' },
-    { src: powersupply, name: 'Power Supply' },
-    { src: storage, name: 'Storage' },
-    { src: ram, name: 'RAM' },
+    { src: "https://i.ibb.co/VQMF2Xv/monitor.jpg", name: 'Monitor' },
+    { src: "https://i.ibb.co/SXLcF43/cpu.png", name: 'CPU' },
+    { src: "https://i.ibb.co/pz8T6Nz/motherboard.png", name: 'Motherboard' },
+    { src: "https://i.ibb.co/KhnrjwZ/powe-supply.png", name: 'Power Supply Unit' },
+    { src: "https://i.ibb.co/drM2SCL/storage.png", name: 'Storage Device' },
+    { src: "https://i.ibb.co/kmR0sy9/ram.png", name: 'RAM' },
 ];
 
 const FeatureCategories = () => {
+
     return (
         <div>
 
@@ -24,13 +20,11 @@ const FeatureCategories = () => {
                 <h1 className='text-center font-bold text-3xl text-black'>Features Category</h1>
                 <div className=' my-4 lg:ml-20'>
                 <div className='grid w-[90%] mx-auto sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6'>
-                    {imagesData.map((data, index) => (
-                        <div key={index} className='bg-white p-4 rounded-lg shadow-md text-center w-[90%] mx-auto m-2 '>
+                    {imagesData?.map((data, index) => (
+                        <div key={index} className='bg-white p-4 rounded-lg shadow-md text-center w-[90%] mx-auto m-2 text-black '>
                              <Link className='flex flex-col items-center' href={`/categories/${data.name.toLowerCase()}`}>
-                            <Image
+                            <img
                                 src={data.src}
-                                width={60}
-                                height={60}
                                 alt={`Picture of ${data.name}`}
                             />
                             <p className='text-center font-semibold text-black mt-2'>{data.name}</p></Link>
@@ -44,3 +38,4 @@ const FeatureCategories = () => {
 };
 
 export default FeatureCategories;
+

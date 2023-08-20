@@ -31,7 +31,7 @@ const Navbar = () => {
   };
 
   const categories = [
-    { name: 'Processor', href: '/categories/processor' },
+    { name: 'CPU', href: '/categories/cpu' },
     { name: 'GPU', href: '/categories/gpu' },
     { name: 'Motherboard', href: '/categories/motherboard' },
     { name: 'RAM', href: '/categories/ram' },

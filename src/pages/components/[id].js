@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from 'next/image';
-import image from '../../assets/image/desktop-carousel4-280922.webp'
+
 
 const ComponentsDetails = ({ component }) => {
 
