@@ -66,9 +66,11 @@ const SingInPage = () => {
                     <div className='flex justify-around w-96'>
                         <div className=" flex justify-center ">
                             <div className='flex justify-around w-28'>
-                                <button className='text-4xl font-bold text-black hover:text-rose-600'><FaGoogle onClick={() => signIn("github", {
+                                <button className='text-4xl font-bold text-black hover:text-rose-600'><FaGoogle 
+                                onClick={() => signIn("google", {
                                     callbackUrl: "http://localhost:3000/"
-                                })} /></button>
+                                })} 
+                                /></button>
                                 <button className='text-4xl font-bold text-black hover:text-rose-600'><FaGithub onClick={() => signIn("github", {
                                     callbackUrl: "http://localhost:3000/"
                                 })} /></button>

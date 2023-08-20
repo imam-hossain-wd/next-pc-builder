@@ -8,6 +8,7 @@ import { clearUser } from '@/redux/features/user/userSlice';
 import DropdownContent from './DropdownContent';
 import pcHouse from '../../assets/logo/pc-house-logo.jpg'
 import Image from 'next/image';
+import { toast } from 'react-hot-toast';
 
 
 const Navbar = () => {
@@ -22,12 +23,12 @@ const Navbar = () => {
   const nextAuthLoggedOut = async () => {
     await signOut();
     dispatch(clearUser());
+    toast.success("Logout successfully")
   };
-
- 
   const firebaseLoggedOut = async () => {
     await signOutFirebase();
     dispatch(clearUser());
+    toast.success("Logout successfully")
   };
 
   const categories = [
@@ -42,14 +43,15 @@ const Navbar = () => {
   ];
 
   const renderAuthButtons = () => {
-    if (nextAuthUserEmail || firebaseUserEmail) {
-      return <li onClick={nextAuthLoggedOut}><a>Sign out</a></li>;
+    if (nextAuthUserEmail) {
+      return <li onClick={nextAuthLoggedOut}><Link href="/">Sign out</Link></li>;
+    } else if (firebaseUserEmail) {
+      return <li onClick={firebaseLoggedOut}><Link href="/">Sign out</Link></li>;
     } else {
       return (
         <div className="flex flex-col lg:flex-row">
           <li><Link href="/singin">Sign In</Link></li>
           <li><Link href="/singup">Sign Up</Link></li>
-         
         </div>
       );
     }

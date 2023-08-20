@@ -64,20 +64,20 @@ const SingUpPage = () => {
         </form>
 
         <div className="flex  items-center m-4">
-  
-            <hr className="w-24 m-2 text-black" />
-            <p className="mx-2 text-sm"> Sing up with</p>
-            <hr className="w-24 m-2" />
-  
-          </div>
+
+          <hr className="w-24 m-2 text-black" />
+          <p className="mx-2 text-sm"> Sing up with</p>
+          <hr className="w-24 m-2" />
+
+        </div>
         <div className=" flex justify-center ">
           <div className='flex justify-around w-28'>
-            <button className='text-4xl font-bold text-black hover:text-rose-600'><FaGoogle onClick={() => signIn("github",  {
-                    callbackUrl: "http://localhost:3000/"
-                  })} /></button>
-            <button className='text-4xl font-bold text-black hover:text-rose-600'><FaGithub onClick={() => signIn("github",  {
-                    callbackUrl: "http://localhost:3000/"
-                  })} /></button>
+            <button className='text-4xl font-bold text-black hover:text-rose-600'><FaGoogle onClick={() => signIn("google", {
+              callbackUrl: "http://localhost:3000/"
+            })} /></button>
+            <button className='text-4xl font-bold text-black hover:text-rose-600'><FaGithub onClick={() => signIn("github", {
+              callbackUrl: "http://localhost:3000/"
+            })} /></button>
           </div>
         </div>
         <p className="font-bold mt-3 text-center">
