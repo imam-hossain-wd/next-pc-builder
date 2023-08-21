@@ -13,8 +13,6 @@ import { useDispatch ,useSelector} from 'react-redux';
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({components}) {
-  console.log(components );
-
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.user.isLoading);
 
@@ -39,8 +37,8 @@ export default function Home({components}) {
     <div className=''>
    <HomeBanner/>
    
-     <div className='sm:ml-10 md:ml-14 lg:ml-28 mx-auto'>
-     <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+     <div className='w-[95%] mx-auto my-10'>
+     <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
      {
      components &&
       components?.map((component) => {
@@ -55,7 +53,8 @@ export default function Home({components}) {
 }
 
 export const getStaticProps = async ()=>{
-  const res = await fetch("http://localhost:5000/components");
+
+  const res = await fetch(`${process.env.URL}/components`);
   const result = await res.json();
   const data = result.slice(0, 6)
   return {

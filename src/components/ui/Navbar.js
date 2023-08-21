@@ -38,7 +38,8 @@ const Navbar = () => {
     { name: 'RAM', href: '/categories/ram' },
     { name: 'Power Supply', href: '/categories/power supply unit' },
     { name: 'Storage', href: '/categories/storage device' },
-    { name: 'monitor', href: '/categories/monitor' },
+    { name: 'Monitor', href: '/categories/monitor' },
+    { name: 'Casine', href: '/categories/casine' },
     { name: 'Others', href: '/categories/others' },
   ];
 

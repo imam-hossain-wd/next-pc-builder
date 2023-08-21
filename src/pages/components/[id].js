@@ -1,10 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from 'next/image';
-
 
 const ComponentsDetails = ({ component }) => {
 
-  const { productName, keyFeatures, category, price, status, individualRating, description,image, averageRating, reviews } = component[0];
+  const { productName, keyFeatures, category, price, status, individualRating, description,image, averageRating, reviews } = component;
   return (
     <div>
       <h1 className='text-3xl font-bold text-center text-black my-5'>Product Details page</h1>
@@ -61,7 +59,8 @@ const ComponentsDetails = ({ component }) => {
 export default ComponentsDetails;
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:5000/components");
+
+  const res = await fetch(`${process.env.URL}/components`);
   const components = await res.json();
 
   const paths = components.map((component) => ({
@@ -72,8 +71,9 @@ export const getStaticPaths = async () => {
 
 
 export const getStaticProps = async (context) => {
+
   const { params } = context;
-  const res = await fetch(`http://localhost:5000/components/${params.id}`);
+  const res = await fetch(`${process.env.URL}/components/${params.id}`);
   const data = await res.json();
   return {
     props: {

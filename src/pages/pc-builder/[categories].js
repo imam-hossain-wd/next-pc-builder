@@ -96,8 +96,9 @@ export const CategoryProduct = ({ product }) => {
 };
 
 export async function getServerSideProps({ params }) {
+
     const category = params.categories;
-    const response = await fetch(`http://localhost:5000/products/${category}`);
+    const response = await fetch(`${process.env.URL}/products/${category}`);
     const categoryData = await response.json();
     return {
         props: {

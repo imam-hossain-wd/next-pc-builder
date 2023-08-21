@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/firebase/firebase.config";
 import { toast } from 'react-hot-toast';
-import { useRouter } from "next/router";
 
 const initialState = {
   user: {
@@ -19,7 +18,6 @@ export const createUser = createAsyncThunk(
     const data = await createUserWithEmailAndPassword(auth, email, password);
     if (data.user.email) {
       toast.success("Sign up Successfully");
-      console.log('user create successfully', data?.user?.email);
     }
     return data.user.email;
   }

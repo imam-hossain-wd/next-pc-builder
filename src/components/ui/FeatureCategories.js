@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from 'next/image';
 import Link from 'next/link';
 
 const imagesData = [
@@ -18,7 +17,7 @@ const FeatureCategories = () => {
 
             <div>
                 <h1 className='text-center font-bold text-3xl text-black'>Features Category</h1>
-                <div className=' my-4 lg:ml-20'>
+                <div className=' my-4'>
                 <div className='grid w-[90%] mx-auto sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6'>
                     {imagesData?.map((data, index) => (
                         <div key={index} className='bg-white p-4 rounded-lg shadow-md text-center w-[90%] mx-auto m-2 text-black '>

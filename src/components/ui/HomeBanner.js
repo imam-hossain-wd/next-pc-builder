@@ -17,7 +17,7 @@ const HomeBanner = () => {
     <div className="">
       <Link href="/pc-builder">
         <button
-          className="border border-white py-2 px-16 rounded-sm text-white"
+          className="border border-white py-2 px-16 rounded-sm text-white hover:bg-rose-500 fond-semi-bold hover:text-white hover:border-0 hover:m-[1px] transition delay-150 transform"
           style={{ width: "fit-content" }}
         >
           Build PC

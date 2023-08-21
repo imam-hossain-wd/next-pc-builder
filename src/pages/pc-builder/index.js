@@ -1,5 +1,5 @@
 import { toast } from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import BuilderItem from "@/components/BuilderItems";
 import Header from "@/components/Header";
 
@@ -25,9 +25,9 @@ const PcBuilder = ({ categories }) => {
           <h1 className="text-xl font-semibold ">Total Price: Tk {total}</h1>
           <button
             className={`px-12 py-2 border-2 border-rose-500 rounded-sm font-semibold  ${
-              productsTotal < 5 && "disabled:opacity-50"
+              productsTotal < 7 && "disabled:opacity-50"
             }`}
-            disabled={productsTotal < 5}
+            disabled={productsTotal < 7}
             onClick={handleClick}
           >
             Complete Build
@@ -51,10 +51,19 @@ const PcBuilder = ({ categories }) => {
 
 export default PcBuilder;
 
+
+// export const getServerSideProps = async () => {
+
+//   const res = await fetch(`${process.env.URL}/categories`)
+//   const data = await res.json()
+//   return { props: {
+//     categories: data,
+//     } 
+//   } 
+// }
+
 export const getStaticProps = async () => {
-  const res = await fetch(
-    "http://localhost:5000/categories"
-  );
+  const res = await fetch(`${process.env.URL}/categories`);
   const data = await res.json();
 
   return {
@@ -64,6 +73,4 @@ export const getStaticProps = async () => {
     revalidate: 10,
   };
 };
-
-
 

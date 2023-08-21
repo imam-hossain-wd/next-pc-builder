@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { useRouter } from "next/router";
 import Link from "next/link";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import Header from "@/components/Header";
@@ -27,7 +26,7 @@ const CategoryProducts = ({ products, category }) => {
 export default CategoryProducts;
 
 export const CategoryProduct = ({ product }) => {
-  const { _id, title, image, category, price, status } = product;
+  const { title, image, category, price, status } = product;
   return (
     <Link href={`/components/${product?._id}`}>
       <div className="shadow-md bg-gray-100 h-auto rounded-md p-4">
@@ -75,9 +74,8 @@ export const CategoryProduct = ({ product }) => {
 
 
 export const getStaticPaths = async () => {
-  const res = await fetch(
-    "http://localhost:5000/components"
-  );
+
+  const res = await fetch(`${process.env.URL}/components`);
   const products = await res.json();
   const paths = products.map((product) => ({
     params: { category: product.category.toLowerCase() },
@@ -89,9 +87,7 @@ export const getStaticProps = async (context) => {
   const { params } = context;
   const { category } = params;
 
-  const res = await fetch(
-    `http://localhost:5000/products/${params.category}`
-    );
+  const res = await fetch(`${process.env.URL}/products/${params.category}`);
   const data = await res.json();
 
   return {

@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 
 const BuilderItem = ({ category, product }) => {
   const dispatch = useDispatch();
-  console.log(product?.image, 'ccccccccc');
+
   return (
     <>
       <div className="flex xsm:flex-col sm:flex-row xsm:gap-6 justify-between w-full items-center my-8 bg-white text-black">
